@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm({ setUser }) {
+  const navigate = useNavigate()
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -27,6 +29,7 @@ export default function LoginForm({ setUser }) {
     } catch {
       setError('Log In Failed - Try Again');
     }
+    navigate("/")
   }
 
   return (
