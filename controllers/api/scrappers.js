@@ -11,7 +11,9 @@ async function cnn(req, res) {
 
 
     console.log("thats the req body")
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        headless: "new"
+    })
     const page = await browser.newPage()
     await page.goto(req.query.url)
 

@@ -1,4 +1,4 @@
-export default function SearchDetailsPage({ currentArticle }) {
+export default function FullArticlePage({ currentArticle }) {
 
     return (
         <div>
