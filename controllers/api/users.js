@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt')
 module.exports = {
     create,
     login,
-    checkToken
+    checkToken,
+    updateSettings
 }
 
 // POST /api/users
@@ -30,19 +31,48 @@ async function login(req, res) {
             email: req.body.email
         })
     } catch (error) {
-        res.status(400).json(error)
+        return res.status(400).json(error);
     }
 
-    const match = await bcrypt.compare(req.body.password, user.password)
+    if (!user) {
+        // email not found
+        return res.status(400).json("Bad Credentials");
+    }
 
+    const match = await bcrypt.compare(req.body.password, user.password);
 
     if (match) {
-        const token = createJWT(user)
-        res.json(token)
+        const token = createJWT(user);
+        return res.json(token);
     }
 
-    res.status(400).json("Bad Credentials")
+    // Password doesn't match
+    return res.status(400).json("Bad Credentials");
 }
+
+async function updateSettings(req, res) {
+    try {
+        const user = await User.findById(req.user._id);
+    
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+
+        if (!req.body.zipcodeKey) {
+            req.body.zipcodeKey = user.zipcodeKey
+        }
+        user.settings = req.body;
+
+
+        const updatedUser = await user.save();
+        const token = createJWT(user)
+    
+        res.json({ user: updatedUser, token});
+      } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+      }
+}
+
 
 // Helper Functions //
 
@@ -59,5 +89,4 @@ function checkToken(req, res) {
     // req.user will always be there for you when a token is sent
     console.log('req.user', req.user);
     res.json(req.exp);
-  }
-  
+}

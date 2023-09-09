@@ -7,10 +7,7 @@ module.exports = {
 
 
 async function cnn(req, res) {
-    console.log(req.query.url)
 
-
-    console.log("thats the req body")
     const browser = await puppeteer.launch({
         headless: "new"
     })
@@ -21,9 +18,9 @@ async function cnn(req, res) {
         return paragraphElements.map(pargraphs => pargraphs.textContent)
     })
 
-    await browser.close()
 
-    console.log(text)
+    await page.close()
+    await browser.close()
     
     res.json(text)
 }

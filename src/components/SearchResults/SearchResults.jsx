@@ -9,7 +9,8 @@ export default function SearchResults({ newsArticles, setNewsArticles, setCurren
     }, [formData])
     
     async function fetchData() {
-        const data = await URLMaker.createSearchURL(formData)
+        const url = await URLMaker.createSearchURL(formData)
+        const data = await URLMaker.makeApiCall(url)
         console.log(data)
         setNewsArticles(data.data)
     }

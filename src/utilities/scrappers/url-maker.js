@@ -1,4 +1,4 @@
-async function makeApiCall(url){
+export async function makeApiCall(url){
     try {
         const response = await fetch(url)
 
@@ -39,7 +39,7 @@ export function createSearchURL(params) {
 
     console.log(fullURL)
 
-    return makeApiCall(fullURL)
+    return fullURL
 }
 
 function createHomeURL(user, ) {

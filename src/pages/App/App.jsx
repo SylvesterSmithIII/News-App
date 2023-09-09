@@ -16,6 +16,7 @@ import SettingsPage from '../SettingsPage/SettingsPage'
 export default function App() {
 
   const [user, setUser] = useState(getUser())
+  console.log(user)
   const [currentArticle, setCurrentArticle] = useState({})
   const [newsArticles, setNewsArticles] = useState([])
   const [loading, setLoading] = useState(false)
@@ -33,7 +34,7 @@ export default function App() {
             <Route path="/search/:articleName" element={ <FullArticlePage currentArticle={currentArticle} /> } />
             <Route path="/saved" element={ <SavedPage /> } />
             <Route path="/saved/:articleName" element={ <SavedDetailsPage /> } />
-            <Route path="/settings" element={ <SettingsPage /> } />
+            <Route path="/settings" element={ <SettingsPage user={user} setUser={setUser} /> } />
           </Routes>
 
         </>

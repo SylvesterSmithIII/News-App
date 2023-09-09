@@ -18,7 +18,18 @@ const userSchema = new Schema({
       trim: true,
       minLength: 3,
       required: true
-    }
+    },
+    settings: {
+      preferences: {
+        sources: { type: Array },
+        categories: { type: Array },
+        languages: { type: Array },
+        keywords: { type: Array },
+        sort: { type: Array},
+      },
+      homePageUrl: String,
+      zipcodeKey: String,
+    },
   }, {
     timestamps: true,
     toJSON: {
