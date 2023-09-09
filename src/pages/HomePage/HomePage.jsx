@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import ArticleCard from '../../components/ArticleCard/ArticleCard'
+import WeatherStats from '../../components/WeatherStats/WeatherStats'
 
 
-export default function HomePage({ newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading }) {
+export default function HomePage({ user, newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, weatherStats }) {
 
     useEffect(() => {
         (async () => {
@@ -25,10 +26,14 @@ export default function HomePage({ newsArticles, setNewsArticles, currentArticle
         })()
     }, [])
 
+    console.log(user)
+    console.log(weatherStats)
+
     const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} />)
 
     return (
         <div>
+            {user?.settings?.zipcodeKey ? <WeatherStats weatherStats={weatherStats} /> : ""}
             {
                 loading 
                 ?
@@ -40,7 +45,7 @@ export default function HomePage({ newsArticles, setNewsArticles, currentArticle
                 </>
                 :
                 articles
-                }
+            }
         </div>
     )
 }

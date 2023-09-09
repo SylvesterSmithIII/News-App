@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service'
 
@@ -12,14 +12,28 @@ import FullArticlePage from '../FullArticlePage/FullArticlePage'
 import SavedPage from '../SavedPage/SavedPage'
 import SavedDetailsPage from '../SavedDetailsPage/SavedDetailsPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
+import { getForecast } from '../../utilities/general-function';
 
 export default function App() {
 
   const [user, setUser] = useState(getUser())
-  console.log(user)
   const [currentArticle, setCurrentArticle] = useState({})
   const [newsArticles, setNewsArticles] = useState([])
   const [loading, setLoading] = useState(false)
+  const [weatherStats, setWeatherStats] = useState([])
+
+  // useEffect(() => {
+  //     (async () => {
+  //       await getWeatherStats()
+  //     })()
+  // }, [user])
+
+  async function getWeatherStats() {
+    if (user?.settings?.zipcodeKey) {
+      const data = await getForecast(user.settings.zipcodeKey)
+      setWeatherStats(data)
+    }
+  }
 
   return (
     <main className="App">
@@ -28,7 +42,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/" element={ <HomePage newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
+            <Route path="/" element={ <HomePage user={user} newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} weatherStats={weatherStats} /> } />
             <Route path="/weather" element={ <WeatherPage /> } />
             <Route path="/search" element={ <SearchPage newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} /> } />
             <Route path="/search/:articleName" element={ <FullArticlePage currentArticle={currentArticle} /> } />
@@ -42,7 +56,7 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={ <HomePage newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
+            <Route path="/" element={ <HomePage user={user} newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} weatherStats={weatherStats} /> } />
             <Route path="/auth" element={ <AuthPage setUser={setUser} /> } />
           </Routes>
         </>

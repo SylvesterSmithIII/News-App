@@ -1,5 +1,6 @@
 const baseUrl = "https://dataservice.accuweather.com/locations/v1/search"
 const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY
+const fiveDayUrl = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/"
 
 export function handleClick(evt, formData, setFormData) {
     const name = evt.target.name;
@@ -23,4 +24,18 @@ export async function getZipcodeKey(zipcode) {
     if (!data.length) return ""
 
     return data[0].Key
+}
+
+export async function getForecast(zipcodeKey) {
+    const fullUrl = `${fiveDayUrl}${zipcodeKey}?apikey=${weatherApiKey}`
+
+    const response = await fetch(fullUrl)
+
+    if (!response.ok) throw new Error(`API request failed with status: ${response.status}`)
+
+    const data = await response.json()
+
+    console.log(data)
+
+    return data.DailyForecasts
 }
