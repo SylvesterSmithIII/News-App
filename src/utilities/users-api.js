@@ -17,3 +17,11 @@ export function checkToken() {
 export function changeSetting(settings) {
   return sendRequest(`${BASE_URL}/settings`, 'PUT', settings);
 }
+
+export function saveArticle(articleData) {
+  return sendRequest(`${BASE_URL}/create`, 'POST', articleData)
+}
+
+export function deleteArticle(description) {
+  return sendRequest(`${BASE_URL}/delete`, 'DELETE', description)
+}

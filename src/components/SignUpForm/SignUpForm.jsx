@@ -1,62 +1,106 @@
-import { Component } from 'react'
-import { signUp } from '../../utilities/users-service'
+import { useState } from 'react';
+import { signUp } from '../../utilities/users-service';
 
+export default function SignUpForm({ setUser }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirm: '',
+  });
 
-export default class SignUpForm extends Component {
+  const [error, setError] = useState('');
 
+  const handleChange = (evt) => {
+    setFormData({
+      ...formData,
+      [evt.target.name]: evt.target.value,
+    });
+    setError('');
+  };
 
-
-    state = {
-        name: '',
-        email: '',
-        password: '',
-        confirm: '',
-        error: ''
-    };
-
-    handleChange = (evt) => {
-        this.setState({
-            [evt.target.name]: evt.target.value,
-            error: ''
-        });
-    };
-
-    handleSubmit = async (evt) => {
-        evt.preventDefault()
-        try {
-            const {name, email, password} = this.state
-            const formData = {name, email, password}
-            // the promise returned by the signUp service
-            // method will resolve to the user object uncluded in
-            // the payload of the JSON Web Token (JWT)
-            const user = await signUp(formData)
-
-            this.props.setUser(user)
-
-        } catch  {
-            this.setState( { error: 'Sign Up Failed - Try Again'})
-        }
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const user = await signUp(formData);
+      setUser(user);
+    } catch {
+      setError('Sign Up Failed - Try Again');
     }
+  };
 
-    render() {
-        const disable = this.state.password !== this.state.confirm;
-        return (
-          <div>
-            <div className="form-container">
-              <form autoComplete="off" onSubmit={this.handleSubmit}>
-                <label>Name</label>
-                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-                <label>Email</label>
-                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-                <label>Password</label>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-                <label>Confirm</label>
-                <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-                <button type="submit" disabled={disable}>SIGN UP</button>
-              </form>
-            </div>
-            <p className="error-message">&nbsp;{this.state.error}</p>
-          </div>
-        );
-    }
+  const disable = formData.password !== formData.confirm;
+
+  return (
+    <div className="max-w-md mx-auto">
+  <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off" onSubmit={handleSubmit}>
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+        Name
+      </label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name"
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+    </div>
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+        Email
+      </label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email"
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+    </div>
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+        Password
+      </label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="password"
+        type="password"
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+    </div>
+    <div className="mb-6">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirm">
+        Confirm Password
+      </label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="confirm"
+        type="password"
+        name="confirm"
+        value={formData.confirm}
+        onChange={handleChange}
+        required
+      />
+    </div>
+    <div className="flex items-center justify-center">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+        disabled={disable}
+      >
+        SIGN UP
+      </button>
+    </div>
+  </form>
+  <p className="text-red-500 text-xs italic">&nbsp;{error}</p>
+</div>
+  );
 }

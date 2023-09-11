@@ -10,5 +10,7 @@ router.post('/', usersCtrl.create);
 router.post('/login', usersCtrl.login)
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 router.put('/settings', ensureLoggedIn, usersCtrl.updateSettings)
+router.post('/create', ensureLoggedIn, usersCtrl.saveArticle)
+router.delete('/delete', ensureLoggedIn, usersCtrl.deleteArticle)
 
 module.exports = router;

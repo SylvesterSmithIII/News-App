@@ -4,6 +4,14 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
+const savedArticlesSchema = new Schema({
+  author: String,
+  title: String,
+  description: String,
+  url: String,
+  image: String
+})
+
 const userSchema = new Schema({
     name: {type: String, required: true},
     email: {
@@ -28,8 +36,10 @@ const userSchema = new Schema({
         sort: { type: Array},
       },
       homePageUrl: String,
+      zipcode: Number,
       zipcodeKey: String,
     },
+    savedArticles: [savedArticlesSchema]
   }, {
     timestamps: true,
     toJSON: {

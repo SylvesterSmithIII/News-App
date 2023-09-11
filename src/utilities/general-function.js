@@ -27,15 +27,21 @@ export async function getZipcodeKey(zipcode) {
 }
 
 export async function getForecast(zipcodeKey) {
-    const fullUrl = `${fiveDayUrl}${zipcodeKey}?apikey=${weatherApiKey}`
+  const fullUrl = `${fiveDayUrl}${zipcodeKey}?apikey=${weatherApiKey}`
 
-    const response = await fetch(fullUrl)
+  try {
+    const response = await fetch(fullUrl);
 
-    if (!response.ok) throw new Error(`API request failed with status: ${response.status}`)
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`)
+    }
 
     const data = await response.json()
 
-    console.log(data)
-
-    return data.DailyForecasts
+    return data.DailyForecasts;
+  } catch (error) {
+    console.error("An error occurred while fetching weather data", error);
+    return []
+  }
 }
+

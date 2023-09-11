@@ -6,7 +6,9 @@ module.exports = {
     create,
     login,
     checkToken,
-    updateSettings
+    updateSettings,
+    saveArticle,
+    deleteArticle
 }
 
 // POST /api/users
@@ -62,6 +64,54 @@ async function updateSettings(req, res) {
             req.body.zipcodeKey = user.zipcodeKey
         }
         user.settings = req.body;
+
+
+        const updatedUser = await user.save();
+        const token = createJWT(user)
+    
+        res.json({ user: updatedUser, token});
+      } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+      }
+}
+
+async function saveArticle(req, res) {
+    try {
+        const user = await User.findById(req.user._id);
+    
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.savedArticles.push(req.body)
+
+
+        const updatedUser = await user.save();
+        const token = createJWT(user)
+    
+        res.json({ user: updatedUser, token});
+      } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+      }
+}
+
+async function deleteArticle(req, res) {
+    try {
+
+        const { description } = req.body
+        console.log(req.body)
+
+        const user = await User.findById(req.user._id);
+    
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+
+        const articleId = user.savedArticles.find(savedArticle => savedArticle.description === description)
+
+
+
+        user.savedArticles = user.savedArticles.filter(article => article._id !== articleId._id)
 
 
         const updatedUser = await user.save();

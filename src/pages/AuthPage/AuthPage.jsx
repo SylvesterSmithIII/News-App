@@ -11,10 +11,10 @@ export default function AuthPage({ setUser }) {
   }
  
   return (
-    <main>
-      <h1>AuthPage</h1>
-      <button onClick={handleClick}>Show {showBool ? "Sign Up Page" : "Login Page"}</button>
-      <br /><br />
+    <main className='w-full'>
+      <div className='flex justify-center'>
+        <button onClick={handleClick} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-4'>Show {showBool ? "Sign Up Page" : "Login Page"}</button>
+      </div>
       {
         showBool ?
         <LoginForm setUser={setUser} />
