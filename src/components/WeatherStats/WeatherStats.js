@@ -35,7 +35,8 @@ export default function WeatherStats({ weatherStats, weatherLoading, city, state
             :
             <>
             <h1 className="text-2xl mb-4">The Weather today in {returnWord(icon)} {city}, {state}</h1>
-            <div className="flex items-center mb-4">
+            <div className='flex max-xs:flex-col sm:flex-row md:flex-row justify-evenly'>
+            <div className="flex flex-col items-center mb-4">
                 <p className="text-lg mr-4">Day: {todaysWeather.Day.IconPhrase}</p>
                 <img
                 src={getIcon(todaysWeather.Day.Icon)}
@@ -43,13 +44,14 @@ export default function WeatherStats({ weatherStats, weatherLoading, city, state
                 className="aspect-auto"
                 />
             </div>
-            <div className="flex items-center mb-4">
+            <div className="flex flex-col items-center mb-4">
                 <p className="text-lg mr-4">Night: {todaysWeather.Night.IconPhrase}</p>
                 <img
                 src={getIcon(todaysWeather.Night.Icon)}
                 alt="weather icon"
                 className="aspect-auto"
                 />
+            </div>
             </div>
             <div className="mb-4">
                 <p className="text-lg">
