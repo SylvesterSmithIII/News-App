@@ -44,7 +44,7 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
         setUser(newUserData.user)
     }
 
-    const isSaved = user.savedArticles.some(savedArticle => savedArticle.url === article.url)
+    const isSaved = user?.savedArticles?.some(savedArticle => savedArticle?.url === article?.url)
 
     return (
         <div className="bg-white rounded-lg overflow-hidden shadow-lg p-4">

@@ -3,7 +3,7 @@ import ArticleCard from '../../components/ArticleCard/ArticleCard'
 import WeatherStats from '../../components/WeatherStats/WeatherStats'
 
 
-export default function HomePage({ user, setUser, newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, weatherStats, weatherLoading, isNavOpen }) {
+export default function HomePage({ user, setUser, newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, weatherStats, weatherLoading, isNavOpen, showSaved }) {
 
     useEffect(() => {
         (async () => {
@@ -45,7 +45,7 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
                 // while text loads
                 <>
                 'please wait... loading...'
-                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={false} />
+                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={showSaved} />
                 </>
                 :
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>
