@@ -29,7 +29,7 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
         })()
     }, [])
 
-    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={true} />)
+    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={showSaved} />)
 
     const city = user?.settings?.locationInfo?.cityName
 
