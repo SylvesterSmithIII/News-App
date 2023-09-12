@@ -14,7 +14,7 @@ export default function FullArticlePage({ currentArticle }) {
             >
               Go To Article!
             </a>
-            { currentArticle.preview.image && <img src={currentArticle.preview.image} alt="this articles cover" className="mb-4 mx-auto"></img>}
+            { currentArticle.preview.image && <img src={currentArticle.preview.image} alt="this articles cover" className="mb-4"></img>}
             {currentArticle.text.map((p, idx) => {
                 return <div key={idx}>
                     <p>{p}</p>
