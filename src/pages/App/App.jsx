@@ -24,6 +24,13 @@ export default function App() {
   const [weatherLoading, setWeatherLoading] = useState(true)
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  useEffect(() => {
+    (async () => {
+      const userInfo = await getUser()
+      console.log(userInfo)
+      setUser(userInfo)
+    })()
+  }, [])
 
   useEffect(() => {
       (async () => {

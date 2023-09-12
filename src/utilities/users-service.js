@@ -1,54 +1,67 @@
-// Service modules export buisiness/app logic
-// such as managing tokens,  etc.
-// Service modules ofteb depend upon API modules
-// for making AJAX requests to the server.
+import * as usersAPI from './users-api';
+import KJUR from 'jsrsasign';
 
-import * as usersAPI from './users-api'
 
-export function getToken() {
+export async function getToken() {
     const token = localStorage.getItem('token')
-
+  
     if (!token) return null;
-
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    // A JWT's exp is expressed in seconds, not milliseconds, so convert
-    if (payload.exp < Date.now() / 1000) {
+  
+    try {
+      const decodedToken = KJUR.jws.JWS.parse(token)
+      const currentTimeInSeconds = Math.floor(Date.now() / 1000)
+  
+      if (decodedToken.payloadObj.exp < currentTimeInSeconds) {
         // Token has expired - remove it from localStorage
-        localStorage.removeItem('token');
-        return null;
-  }
-  return token;
+        localStorage.removeItem('token')
+        return null
+      }
+  
+      return token
+    } catch (error) {
+      // Handle token verification error (e.g., invalid token)
+      console.error('Token verification error:', error)
+      return null
+    }
 }
 
-export function getUser() {
-    const token = getToken()
+export async function getUser() {
+    const token = await getToken()
+  
+    if (!token) return null
 
-    return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+    const decodedToken = KJUR.jws.JWS.parse(token)
+  
+    return decodedToken.payloadObj.user || null
+
 }
 
 export async function signUp(userData) {
-    const token = await usersAPI.signUp(userData)
-    localStorage.setItem('token', token)
-    return getUser()
+  try {
+    const token = await usersAPI.signUp(userData);
+    localStorage.setItem('token', token);
+    return getUser();
+  } catch (error) {
+    // Handle sign-up error
+    console.error('Sign-up error:', error);
+    throw error; // Propagate the error
+  }
 }
 
 export function logOut() {
-    localStorage.removeItem('token')
+  localStorage.removeItem('token');
 }
 
 export async function login(credentials) {
-    
-    const token = await usersAPI.login(credentials)
+  try {
+    const token = await usersAPI.login(credentials);
 
-    if (token) localStorage.setItem('token', token)
+    if (token) localStorage.setItem('token', token);
 
-    return getUser()
-}
-
-export function checkToken() {
-    // Just so that you don't forget how to use .then
-    return usersAPI.checkToken()
-      // checkToken returns a string, but let's 
-      // make it a Date object for more flexibility
-      .then(dateStr => new Date(dateStr));
+    return getUser();
+  } catch (error) {
+    // Handle login error
+    console.error('Login error:', error);
+    throw error; // Propagate the error
   }
+}

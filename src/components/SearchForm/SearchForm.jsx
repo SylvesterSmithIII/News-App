@@ -16,6 +16,8 @@ export default function SearchForm({ formData, setFormData, wantDate = false }) 
   function handleChange(evt) {
     const { name, value } = evt.target;
 
+    evt.target.value = 'disabled'
+
     if (name === 'keywords' || name === 'date') {
       setInputValues({ ...inputValues, [name]: value });
     } else {
