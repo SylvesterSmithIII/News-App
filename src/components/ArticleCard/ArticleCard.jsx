@@ -1,4 +1,4 @@
-import { cnnScrapper } from "../../utilities/scrapper-service"
+import { cnnscraper } from "../../utilities/scraper-service"
 import { useNavigate } from 'react-router-dom';
 import { saveArticle, deleteArticle } from "../../utilities/users-api";
 
@@ -13,7 +13,7 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
         })
         setLoading(true)
 
-        const text = await cnnScrapper(article.url)
+        const text = await cnnscraper(article.url)
         setLoading(false)
 
         setCurrentArticle({

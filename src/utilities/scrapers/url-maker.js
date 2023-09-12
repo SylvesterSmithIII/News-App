@@ -37,8 +37,6 @@ export function createSearchURL(params) {
 
     const fullURL = `${baseURL}?${searchParams.toString()}`
 
-    console.log(fullURL)
-
     return fullURL
 }
 

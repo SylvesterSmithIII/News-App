@@ -8,7 +8,7 @@ export default async function sendRequest(apiUrl, siteUrl) {
     },
   };
 
-  const token = getToken();
+  const token = await getToken();
   if (token) {
     options.headers.Authorization = `Bearer ${token}`;
   }

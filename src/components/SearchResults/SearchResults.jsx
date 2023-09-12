@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import ArticleCard from '../ArticleCard/ArticleCard'
-import * as URLMaker from '../../utilities/scrappers/url-maker'
+import * as URLMaker from '../../utilities/scrapers/url-maker'
 
 export default function SearchResults({ currentArticle, newsArticles, setNewsArticles, setCurrentArticle, formData, loading, setLoading }) {
 
@@ -11,11 +11,9 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
     async function fetchData() {
         const url = URLMaker.createSearchURL(formData)
         const data = await URLMaker.makeApiCall(url)
-        console.log(data)
         setNewsArticles(data.data)
     }
 
-    console.log(currentArticle)
 
     const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} laoding={loading} setLoading={setLoading} />)
 

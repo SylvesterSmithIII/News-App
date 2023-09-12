@@ -16,7 +16,7 @@ import { getForecast } from '../../utilities/general-function';
 
 export default function App() {
 
-  const [user, setUser] = useState(getUser())
+  const [user, setUser] = useState(null)
   const [currentArticle, setCurrentArticle] = useState({})
   const [newsArticles, setNewsArticles] = useState([])
   const [loading, setLoading] = useState(false)

@@ -3,7 +3,7 @@ import SearchForm from '../../components/SearchForm/SearchForm'
 import SelectedFormFields from '../../components/SelectedFormFields/SelectedFormFields'
 import ZipcodeForm from '../../components/ZipcodeForm/ZipcodeForm'
 import { getZipcodeKey } from '../../utilities/general-function'
-import { createSearchURL } from '../../utilities/scrappers/url-maker'
+import { createSearchURL } from '../../utilities/scrapers/url-maker'
 import { changeSetting } from '../../utilities/users-api'
 
 export default function SettingsPage({ user, setUser }) {
@@ -16,7 +16,6 @@ export default function SettingsPage({ user, setUser }) {
         let zipcodeKey = ""
         if (zipcode) {
             zipcodeKey = await getZipcodeKey(zipcode)
-            console.log(zipcodeKey)
             if (!zipcodeKey) return setErrMsg("Invalid ZipCode")
         }
         

@@ -1,12 +1,12 @@
-// routes/api/scrapper
+// routes/api/scraper
 
 const express = require('express');
 const router = express.Router();
-const scrapperCtrl = require('../../controllers/api/scrappers');
+const scraperCtrl = require('../../controllers/api/scrapers');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // /api/users
-router.get('/cnn', ensureLoggedIn, scrapperCtrl.cnn);
+router.get('/cnn', ensureLoggedIn, scraperCtrl.cnn);
 
 
 module.exports = router;

@@ -99,7 +99,6 @@ async function deleteArticle(req, res) {
     try {
 
         const { description } = req.body
-        console.log(req.body)
 
         const user = await User.findById(req.user._id);
     

@@ -49,9 +49,5 @@
       "last 1 safari version"
     ]
   },
-  "browser": {
-    "crypto": false,
-    "stream": false
-  },
   "proxy": "http://localhost:3001"
 }

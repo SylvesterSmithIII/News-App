@@ -34,13 +34,9 @@ export default function SearchForm({ formData, setFormData, wantDate = false }) 
 
     const { name } = evt.target;
 
-    console.log(name);
-
     if (name === 'keywords' || name === 'date') {
       const inputValue = inputValues[name];
-      console.log(inputValue);
       if (inputValue) {
-        console.log('here');
         const updatedFormData = { ...formData, [name]: [...formData[name], inputValue] };
         setFormData(updatedFormData);
 
