@@ -20,7 +20,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
             <div className='mb-4'>
               <Link
                 to="/"
-                className="text-2xl font-bold block mb-2 hover:text-blue-500"
+                className="text-2xl font-bold block mb-2 hover:text-blue-500 transition duration-300 ease-in-out"
               >
                 Home
               </Link>
@@ -28,11 +28,11 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
             {user && (
               <div className="mb-4">
                 <p className="text-lg">Welcome, {user.name}</p>
-                <ul className="mt-2">
+                <ul className="mt-4 space-y-4">
                   <li>
                     <Link
                       to="/weather"
-                      className="block text-lg hover:text-blue-500"
+                      className="block text-lg hover:text-blue-500 transition duration-300 ease-in-out"
                     >
                       Weather
                     </Link>
@@ -40,7 +40,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                   <li>
                     <Link
                       to="/search"
-                      className="block text-lg hover:text-blue-500"
+                      className="block text-lg hover:text-blue-500 transition duration-300 ease-in-out"
                     >
                       Search
                     </Link>
@@ -48,7 +48,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                   <li>
                     <Link
                       to="/saved"
-                      className="block text-lg hover:text-blue-500"
+                      className="block text-lg hover:text-blue-500 transition duration-300 ease-in-out"
                     >
                       Saved
                     </Link>
@@ -56,7 +56,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                   <li>
                     <Link
                       to="/settings"
-                      className="block text-lg hover:text-blue-500"
+                      className="block text-lg hover:text-blue-500 transition duration-300 ease-in-out"
                     >
                       Settings
                     </Link>
@@ -68,7 +68,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
               <Link
                 to=""
                 onClick={handleLogOut}
-                className="text-lg hover:text-red-500"
+                className="text-lg hover:text-red-500 transition duration-300 ease-in-out"
               >
                 Log Out
               </Link>
@@ -87,7 +87,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
           {/* Mobile Navbar with Hamburger Dropdown */}
           <div className="block md:hidden lg:hidden p-4">
             <div className="flex justify-between items-center">
-              <Link to="/" className="text-2xl font-bold hover:text-blue-500">
+              <Link to="/" className="text-2xl font-bold hover:text-blue-500 transition duration-300 ease-in-out">
                 Home
               </Link>
               <button
@@ -102,28 +102,28 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
               <ul>
                 {user && (
                   <li>
-                    <Link to="/weather" className="text-lg hover:text-blue-500">
+                    <Link to="/weather" className="text-lg hover:text-blue-500 transition duration-300 ease-in-out">
                       Weather
                     </Link>
                   </li>
                 )}
                 {user && (
                   <li>
-                    <Link to="/search" className="text-lg hover:text-blue-500">
+                    <Link to="/search" className="text-lg hover:text-blue-500 transition duration-300 ease-in-out">
                       Search
                     </Link>
                   </li>
                 )}
                 {user && (
                   <li>
-                    <Link to="/saved" className="text-lg hover:text-blue-500">
+                    <Link to="/saved" className="text-lg hover:text-blue-500 transition duration-300 ease-in-out">
                       Saved
                     </Link>
                   </li>
                 )}
                 {user && (
                   <li>
-                    <Link to="/settings" className="text-lg hover:text-blue-500">
+                    <Link to="/settings" className="text-lg hover:text-blue-500 transition duration-300 ease-in-out">
                       Settings
                     </Link>
                   </li>
@@ -133,7 +133,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                     <Link
                       to=""
                       onClick={handleLogOut}
-                      className="text-lg hover:text-red-500"
+                      className="text-lg hover:text-red-500 transition duration-300 ease-in-out"
                     >
                       Log Out
                     </Link>
@@ -142,7 +142,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                   <li>
                     <Link
                       to="/auth"
-                      className="text-lg hover:bg-blue-500 hover:text-white py-2 px-4 rounded-full block text-center"
+                      className="text-lg hover:bg-blue-500 hover:text-white py-2 px-4 rounded-full block text-center transition duration-300 ease-in-out"
                     >
                       Login
                     </Link>

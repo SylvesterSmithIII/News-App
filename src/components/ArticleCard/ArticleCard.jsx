@@ -80,19 +80,23 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
           {showSaved && (
           
           !isSaved ? (
+            <div className="flex justify-center">
             <button
               onClick={handleSubmit}
               className="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600"
             >
               Save this article for later
             </button>
+            </div>
           ) : (
+            <div className="flex justify-center">
             <button
               onClick={handleDelete}
               className="bg-red-500 text-white px-4 py-2 mt-4 rounded hover:bg-red-600"
             >
               Remove this saved Article
             </button>
+            </div>
           )
           )}
         </div>
