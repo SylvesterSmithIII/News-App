@@ -31,9 +31,9 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
 
     const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={true} />)
 
-    const city = user.settings.locationInfo.cityName
+    const city = user?.settings?.locationInfo?.cityName
 
-    const state = user.settings.locationInfo.stateName
+    const state = user?.settings?.locationInfo?.stateName
 
     return (
         <div className='w-full p-8'>
