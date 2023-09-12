@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service'
 
-import './App.css';
 import NavBar from '../../components/NavBar/NavBar'
 import AuthPage from '../AuthPage/AuthPage'
 import SearchPage from '../SearchPage/SearchPage'
@@ -27,7 +26,6 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const userInfo = await getUser()
-      console.log(userInfo)
       setUser(userInfo)
     })()
   }, [])
@@ -38,10 +36,9 @@ export default function App() {
       })()
   }, [user])
 
-  console.log(user)
 
   async function getWeatherStats() {
-    if (user?.settings?.zipcodeKey) {
+    if (user?.settings?.locationInfo?.zipcodeKey) {
       // const data = await getForecast(user.settings.zipcodeKey)
       const data = []
       setWeatherStats(data)
@@ -58,7 +55,7 @@ export default function App() {
             {/* Route components in here */}
             <Route path="/" element={ <HomePage user={user} setUser={setUser} newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} weatherStats={weatherStats} weatherLoading={weatherLoading} isNavOpen={isNavOpen} /> } />
             <Route path="/weather" element={ <WeatherPage weatherStats={weatherStats} /> } />
-            <Route path="/search" element={ <SearchPage currentArticle={currentArticle} newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
+            <Route path="/search" element={ <SearchPage currentArticle={currentArticle} newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} use={user} /> } />
             <Route path="/search/:articleName" element={ <FullArticlePage currentArticle={currentArticle} /> } />
             <Route path="/saved" element={ <SavedPage user={user} setUser={setUser} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
             <Route path="/saved/:articleName" element={ <SavedDetailsPage /> } />

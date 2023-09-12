@@ -2,8 +2,9 @@ import React from 'react';
 import LiveTime from '../LiveTime/LiveTime';
 import weatherIcons from '../../utilities/config/imgLinks';
 import sampleWeatherData from '../../utilities/config/sampleWeatherResponse';
+import { returnWord } from '../../utilities/general-function'
 
-export default function WeatherStats({ weatherStats, weatherLoading }) {
+export default function WeatherStats({ weatherStats, weatherLoading, city, state }) {
   function getIcon(iconIdx) {
     return weatherIcons[iconIdx - 1];
   }
@@ -14,6 +15,17 @@ export default function WeatherStats({ weatherStats, weatherLoading }) {
 
   const todaysWeather = weatherStats[0];
 
+  const time = new Date()
+  let icon
+  if (time.getHours() < 17) {
+    icon = todaysWeather?.Day?.Icon
+  } else {
+    icon = todaysWeather?.Night?.Icon
+  }
+
+  console.log(icon)
+  console.log(returnWord(icon))
+
   return (
     <div className="mb-4">
         {
@@ -22,7 +34,7 @@ export default function WeatherStats({ weatherStats, weatherLoading }) {
             "Loading Weather Stats"
             :
             <>
-            <h1 className="text-2xl mb-4">Current Weather</h1>
+            <h1 className="text-2xl mb-4">The Weather today in {returnWord(icon)} {city}, {state}</h1>
             <div className="flex items-center mb-4">
                 <p className="text-lg mr-4">Day: {todaysWeather.Day.IconPhrase}</p>
                 <img
@@ -47,10 +59,7 @@ export default function WeatherStats({ weatherStats, weatherLoading }) {
                 </p>
             </div>
             <hr className="my-4 border-t" />
-            <div className="text-sm text-gray-600">
-                <p>The time is currently: <LiveTime /></p>
-                <p>Weather data provided by [Your Data Source]</p>
-            </div>
+            <p className='text-center text-lg pt-2'>And heres the news!</p>
             </>
         }
     </div>

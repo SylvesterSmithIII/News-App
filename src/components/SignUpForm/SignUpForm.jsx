@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { signUp } from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUpForm({ setUser }) {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,6 +29,7 @@ export default function SignUpForm({ setUser }) {
     } catch {
       setError('Sign Up Failed - Try Again');
     }
+    navigate("/")
   };
 
   const disable = formData.password !== formData.confirm;

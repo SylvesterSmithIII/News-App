@@ -36,8 +36,12 @@ const userSchema = new Schema({
         sort: { type: Array},
       },
       homePageUrl: String,
-      zipcode: Number,
-      zipcodeKey: String,
+      locationInfo: {
+        zipcode: Number,
+        zipcodeKey: String,
+        cityName: String,
+        stateName: String
+      }
     },
     savedArticles: [savedArticlesSchema]
   }, {

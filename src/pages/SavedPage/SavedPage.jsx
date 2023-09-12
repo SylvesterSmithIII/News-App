@@ -3,7 +3,7 @@ import ArticleCard from "../../components/ArticleCard/ArticleCard"
 export default function SavedPage({ user, setUser, setCurrentArticle, loading, setLoading }) {
 
     
-    const articles = user.savedArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={false} setUser={setUser} />)
+    const articles = user.savedArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={true} />)
 
 
     return (

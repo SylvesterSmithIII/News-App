@@ -13,10 +13,10 @@ export default function SettingsPage({ user, setUser }) {
 
     async function handleSubmit() {
         setErrMsg("")
-        let zipcodeKey = ""
+        let locationInfo = null
         if (zipcode) {
-            zipcodeKey = await getZipcodeKey(zipcode)
-            if (!zipcodeKey) return setErrMsg("Invalid ZipCode")
+            locationInfo = await getZipcodeKey(zipcode)
+            if (!locationInfo) return setErrMsg("Invalid ZipCode")
         }
         
         const url = createSearchURL(formData)
@@ -24,8 +24,10 @@ export default function SettingsPage({ user, setUser }) {
         const newUserData = await changeSetting({
             preferences: formData,
             homePageUrl: url,
-            zipcode,
-            zipcodeKey
+            locationInfo: {
+                ...locationInfo,
+                zipcode
+            }
         })
 
         localStorage.setItem('token', newUserData.token)

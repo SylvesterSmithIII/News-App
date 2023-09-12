@@ -15,7 +15,7 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
     }
 
 
-    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} laoding={loading} setLoading={setLoading} />)
+    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} laoding={loading} setLoading={setLoading} showSaved={true} />)
 
     return (
         <>
@@ -27,7 +27,7 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
             // while text loads
             <>
             'please wait... loading...'
-            <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} />
+            <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} showSaved={false} />
             </>
             :
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>

@@ -4,7 +4,7 @@ import SearchForm from '../../components/SearchForm/SearchForm'
 import SelectedFormFields from '../../components/SelectedFormFields/SelectedFormFields'
 
 
-export default function SearchPage({ newsArticles, setNewsArticles, setCurrentArticle, loading, setLoading }) {
+export default function SearchPage({ newsArticles, setNewsArticles, setCurrentArticle, loading, setLoading, user }) {
   
   const [formData, setFormData] = useState({
     sources: [],
@@ -34,7 +34,7 @@ export default function SearchPage({ newsArticles, setNewsArticles, setCurrentAr
 
         <SelectedFormFields formData={formData} setFormData={setFormData} />
 
-        <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} formData={formData} loading={loading} setLoading={setLoading} />
+        <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} formData={formData} loading={loading} setLoading={setLoading} user={user} />
 
         <button onClick={handleLoadMore}>Load More</button>
       </div>

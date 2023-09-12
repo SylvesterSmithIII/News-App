@@ -19,11 +19,19 @@ export async function getZipcodeKey(zipcode) {
 
     if (!response.ok) throw new Error(`API request failed with status: ${response.status}`)
 
-    const data = await response.json()
+    let data = await response.json()
 
     if (!data.length) return ""
 
-    return data[0].Key
+    data = data[0]
+
+    const locationInfo = {
+      zipcodeKey: data.Key,
+      cityName: data.EnglishName,
+      stateName: data.AdministrativeArea.EnglishName
+    }
+
+    return locationInfo
 }
 
 export async function getForecast(zipcodeKey) {
@@ -45,3 +53,32 @@ export async function getForecast(zipcodeKey) {
   }
 }
 
+export function returnWord(icon) {
+  if (icon <= 5) {
+    return "Sunny"
+  } else if (icon <= 8) {
+    return "Cloudy"
+  } else if (icon === 11) {
+    return "Foggy"
+  } else if (icon <= 14 || icon === 18) {
+    return "Rainy"
+  } else if (icon <= 17) {
+    return "Stormy"
+  } else if (icon <= 29) {
+    return "Snowy"
+  } else if (icon === 30) {
+    return "Hot"
+  } else if (icon === 31) {
+    return "Cold"
+  } else if (icon === 31) {
+    return "Windy"
+  } else if (icon <= 38) {
+    return "Cloudy"
+  } else if (icon <= 40) {
+    return "Rainy"
+  } else if (icon <= 42) {
+    return "Stormy"
+  } else if (icon <= 44) {
+    return "Snowy"
+  }
+}

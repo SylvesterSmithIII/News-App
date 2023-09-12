@@ -22,8 +22,6 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
 
                 const data = await response.json()
 
-                console.log(data)
-
                 setNewsArticles(data.data)
             } catch (error) {
                 throw new Error(`API request failed with status: ${error}`)
@@ -31,11 +29,15 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
         })()
     }, [])
 
-    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user ? true: false} setUser={setUser} />)
+    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={true} />)
+
+    const city = user.settings.locationInfo.cityName
+
+    const state = user.settings.locationInfo.stateName
 
     return (
         <div className='w-full p-8'>
-            {user?.settings?.zipcodeKey ? <WeatherStats weatherStats={weatherStats} weatherLoading={weatherLoading} /> : ""}
+            {user?.settings?.locationInfo?.zipcodeKey ? <WeatherStats weatherStats={weatherStats} weatherLoading={weatherLoading} city={city} state={state} /> : ""}
             {
                 loading 
                 ?
@@ -43,7 +45,7 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
                 // while text loads
                 <>
                 'please wait... loading...'
-                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} />
+                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={false} />
                 </>
                 :
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>

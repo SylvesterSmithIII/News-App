@@ -108,8 +108,6 @@ async function deleteArticle(req, res) {
 
         const articleId = user.savedArticles.find(savedArticle => savedArticle.description === description)
 
-
-
         user.savedArticles = user.savedArticles.filter(article => article._id !== articleId._id)
 
 
@@ -136,6 +134,5 @@ function createJWT(user) {
 
 function checkToken(req, res) {
     // req.user will always be there for you when a token is sent
-    console.log('req.user', req.user);
     res.json(req.exp);
 }

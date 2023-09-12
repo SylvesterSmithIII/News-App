@@ -2,7 +2,7 @@ import { cnnscraper } from "../../utilities/scraper-service"
 import { useNavigate } from 'react-router-dom';
 import { saveArticle, deleteArticle } from "../../utilities/users-api";
 
-export default function ArticleCard({ article, setCurrentArticle, user, setUser, loading, setLoading }) {
+export default function ArticleCard({ article, setCurrentArticle, user, setUser, loading, setLoading, showSaved }) {
 
     const navigate = useNavigate()
 
@@ -44,6 +44,8 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
         setUser(newUserData.user)
     }
 
+    const isSaved = user.savedArticles.some(savedArticle => savedArticle.url === article.url)
+
     return (
         <div className="bg-white rounded-lg overflow-hidden shadow-lg p-4">
           <h1
@@ -75,7 +77,9 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
             />
           </div>
           )}
-          {user ? (
+          {showSaved && (
+          
+          !isSaved ? (
             <button
               onClick={handleSubmit}
               className="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600"
@@ -89,6 +93,7 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
             >
               Remove this saved Article
             </button>
+          )
           )}
         </div>
       )
