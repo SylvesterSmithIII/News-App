@@ -2,7 +2,7 @@ import { cnnscraper } from "../../utilities/scraper-service"
 import { useNavigate } from 'react-router-dom';
 import { saveArticle, deleteArticle } from "../../utilities/users-api";
 
-export default function ArticleCard({ article, setCurrentArticle, user, setUser, loading, setLoading, showSaved }) {
+export default function ArticleCard({ article, setCurrentArticle, user, setUser, loading, setLoading, showSaved, allowLink = true }) {
 
     const navigate = useNavigate()
 
@@ -46,10 +46,13 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
 
     const isSaved = user?.savedArticles?.some(savedArticle => savedArticle?.url === article?.url)
 
+    console.log(allowLink)
+
     return (
         <div className="bg-white rounded-lg overflow-hidden shadow-lg p-4">
           <h1
-            onClick={loading ? undefined : handleClick}
+            
+            onClick={loading || !allowLink ? undefined : handleClick}
             className="text-2xl text-center my-2 font-bold"
           >
             {article.title}

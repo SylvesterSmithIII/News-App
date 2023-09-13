@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import ArticleCard from '../../components/ArticleCard/ArticleCard'
 import WeatherStats from '../../components/WeatherStats/WeatherStats'
 
 
-export default function HomePage({ user, setUser, newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, weatherStats, weatherLoading, isNavOpen, showSaved }) {
+export default function HomePage({ user, setUser, newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, weatherStats, weatherLoading, isNavOpen, showSaved, allowLink = true }) {
 
     useEffect(() => {
         (async () => {
@@ -29,7 +29,7 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
         })()
     }, [])
 
-    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={showSaved} />)
+    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={showSaved} allowLink={allowLink} />)
 
     const city = user?.settings?.locationInfo?.cityName
 
@@ -45,7 +45,7 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
                 // while text loads
                 <>
                 <p className='text-2xl'>please wait... loading...</p>
-                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={false} />
+                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={false} allowLink={allowLink} />
                 </>
                 :
                 <>

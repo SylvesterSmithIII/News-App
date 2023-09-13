@@ -1,5 +1,4 @@
 import React from 'react';
-import LiveTime from '../LiveTime/LiveTime';
 import weatherIcons from '../../utilities/config/imgLinks';
 import sampleWeatherData from '../../utilities/config/sampleWeatherResponse';
 import { returnWord } from '../../utilities/general-function'
