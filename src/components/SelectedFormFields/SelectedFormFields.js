@@ -4,7 +4,9 @@ export default function SelectedFormFields({ formData, setFormData }) {
   const fieldButtons = [];
 
   for (const field in formData) {
+    if (field === "limit") continue
     const buttons = formData[field].map((item, idx) => (
+      
       <button
         key={idx}
         name={field}

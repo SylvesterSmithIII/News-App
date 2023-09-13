@@ -86,7 +86,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
           </div>
       
           {/* Mobile Navbar with Hamburger Dropdown */}
-          <div className="block md:hidden lg:hidden p-4">
+          <div className="block md:hidden lg:hidden p-4 ">
             <div className="flex justify-between items-center">
               <Link to="/" className="text-2xl font-bold hover:text-blue-500 transition duration-300 ease-in-out">
               <img src="./images/smallTheCornerOfficeLogo.svg" alt="Logo" />

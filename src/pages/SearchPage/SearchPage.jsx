@@ -13,13 +13,14 @@ export default function SearchPage({ newsArticles, setNewsArticles, currentArtic
     keywords: [],
     date: [],
     sort: [],
+    limit: [25]
   })
 
   // NOT WORKING
   function handleLoadMore() {
     setFormData({
       ...formData,
-      limit: formData.limit[0] + 25
+      limit: [formData.limit[0] + 25]
     })
   }
 
@@ -34,7 +35,8 @@ export default function SearchPage({ newsArticles, setNewsArticles, currentArtic
 
         <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} currentArticle={currentArticle} formData={formData} loading={loading} setLoading={setLoading} user={user} setUser={setUser} />
 
-        <button onClick={handleLoadMore}>Load More</button>
+        {formData.limit[0] === 100 ? "" : <button onClick={handleLoadMore} className='text-2xl font-bold block my-4 hover:text-blue-500 transition duration-300 ease-in-out mx-auto'>Load More Articles</button>}
+        
       </div>
     );
   }
