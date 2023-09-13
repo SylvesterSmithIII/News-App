@@ -23,8 +23,6 @@ export default function SearchPage({ newsArticles, setNewsArticles, currentArtic
     })
   }
 
-  console.log(setUser)
-
 
   return (
       <div className='w-full p-8'>
