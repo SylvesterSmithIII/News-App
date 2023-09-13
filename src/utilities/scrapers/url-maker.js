@@ -39,9 +39,3 @@ export function createSearchURL(params) {
 
     return fullURL
 }
-
-function createHomeURL(user, ) {
-    // might move to backend will need to query
-    // for user and get their profile preferences
-    // and make the api call back there and send the articles over
-}
