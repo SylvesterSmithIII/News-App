@@ -35,22 +35,25 @@ export default function HomePage({ user, setUser, newsArticles, setNewsArticles,
 
     const state = user?.settings?.locationInfo?.stateName
 
+
     return (
         <div className='w-full p-8'>
-            {user?.settings?.locationInfo?.zipcodeKey ? <WeatherStats weatherStats={weatherStats} weatherLoading={weatherLoading} city={city} state={state} /> : ""}
             {
                 loading 
                 ?
                 // will show a preview of the article
                 // while text loads
                 <>
-                'please wait... loading...'
-                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={showSaved} />
+                <p className='text-2xl'>please wait... loading...</p>
+                <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} showSaved={false} />
                 </>
                 :
+                <>
+                {user?.settings?.locationInfo?.zipcodeKey ? <WeatherStats weatherStats={weatherStats} weatherLoading={weatherLoading} city={city} state={state} /> : ""}
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>
                     {articles}
                 </div>
+                </>
             }
         </div>
     )

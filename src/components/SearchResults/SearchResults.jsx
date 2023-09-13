@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import ArticleCard from '../ArticleCard/ArticleCard'
 import * as URLMaker from '../../utilities/scrapers/url-maker'
 
-export default function SearchResults({ currentArticle, newsArticles, setNewsArticles, setCurrentArticle, formData, loading, setLoading }) {
+export default function SearchResults({ currentArticle, newsArticles, setNewsArticles, setCurrentArticle, formData, loading, setLoading, user, setUser }) {
 
     useEffect(() => {
         fetchData()
@@ -15,7 +15,9 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
     }
 
 
-    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} laoding={loading} setLoading={setLoading} showSaved={true} />)
+    const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} showSaved={true} user={user} setUser={setUser} />)
+
+
 
     return (
         <>
@@ -26,8 +28,8 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
             // will show a preview of the article
             // while text loads
             <>
-            'please wait... loading...'
-            <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} showSaved={false} />
+            <p className='text-2xl'>please wait... loading...</p>
+            <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} user={user} setUser={setUser} loading={loading} setLoading={setLoading} showSaved={false} />
             </>
             :
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 
+
 export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
 
     // Toggle the navigation menu state
@@ -22,7 +23,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
                 to="/"
                 className="text-2xl font-bold block mb-2 hover:text-blue-500 transition duration-300 ease-in-out"
               >
-                Home
+                <img src="./images/TheCornerOfficeLogo.svg" alt="Logo" />
               </Link>
             </div>
             {user && (
@@ -88,7 +89,7 @@ export default function NavBar({ user, setUser, isNavOpen, setIsNavOpen }) {
           <div className="block md:hidden lg:hidden p-4">
             <div className="flex justify-between items-center">
               <Link to="/" className="text-2xl font-bold hover:text-blue-500 transition duration-300 ease-in-out">
-                Home
+              <img src="./images/smallTheCornerOfficeLogo.svg" alt="Logo" />
               </Link>
               <button
                 onClick={toggleNav}

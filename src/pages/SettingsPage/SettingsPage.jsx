@@ -8,7 +8,7 @@ import { changeSetting } from '../../utilities/users-api'
 
 export default function SettingsPage({ user, setUser }) {
     const [formData, setFormData] = useState({...user.settings.preferences})
-    const [zipcode, setZipcode] = useState(user.settings.zipcode)
+    const [zipcode, setZipcode] = useState(user.settings.locationInfo.zipcode)
     const [errMsg, setErrMsg] = useState("")
 
     async function handleSubmit() {

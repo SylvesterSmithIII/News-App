@@ -4,7 +4,7 @@ import SearchForm from '../../components/SearchForm/SearchForm'
 import SelectedFormFields from '../../components/SelectedFormFields/SelectedFormFields'
 
 
-export default function SearchPage({ newsArticles, setNewsArticles, setCurrentArticle, loading, setLoading, user }) {
+export default function SearchPage({ newsArticles, setNewsArticles, currentArticle, setCurrentArticle, loading, setLoading, user, setUser }) {
   
   const [formData, setFormData] = useState({
     sources: [],
@@ -24,17 +24,15 @@ export default function SearchPage({ newsArticles, setNewsArticles, setCurrentAr
   }
 
 
-  // test to see which are in formData state
-  // to render option disabled or not
-
   return (
       <div className='w-full p-8'>
+        <h1 className="text-2xl font-bold mb-4 text-center">Search Page</h1>
         
         <SearchForm formData={formData} setFormData={setFormData} wantDate={true} />
 
         <SelectedFormFields formData={formData} setFormData={setFormData} />
 
-        <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} formData={formData} loading={loading} setLoading={setLoading} user={user} />
+        <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} currentArticle={currentArticle} formData={formData} loading={loading} setLoading={setLoading} user={user} seetUser={setUser} />
 
         <button onClick={handleLoadMore}>Load More</button>
       </div>

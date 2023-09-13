@@ -55,9 +55,9 @@ export default function App() {
             {/* Route components in here */}
             <Route path="/" element={ <HomePage user={user} setUser={setUser} newsArticles={newsArticles} setNewsArticles={setNewsArticles} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} weatherStats={weatherStats} weatherLoading={weatherLoading} isNavOpen={isNavOpen} showSaved={true} /> } />
             <Route path="/weather" element={ <WeatherPage weatherStats={weatherStats} /> } />
-            <Route path="/search" element={ <SearchPage currentArticle={currentArticle} newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} use={user} /> } />
+            <Route path="/search" element={ <SearchPage currentArticle={currentArticle} newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} user={user} setUser={setUser} /> } />
             <Route path="/search/:articleName" element={ <FullArticlePage currentArticle={currentArticle} /> } />
-            <Route path="/saved" element={ <SavedPage user={user} setUser={setUser} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
+            <Route path="/saved" element={ <SavedPage user={user} setUser={setUser} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} /> } />
             <Route path="/saved/:articleName" element={ <SavedDetailsPage /> } />
             <Route path="/settings" element={ <SettingsPage user={user} setUser={setUser} /> } />
           </Routes>

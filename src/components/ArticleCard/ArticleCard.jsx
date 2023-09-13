@@ -69,11 +69,11 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
             </a>
           )}
           {article.image && (
-            <div className="w-full aspect-square">
+            <div className="aspect-auto">
             <img
               src={article.image}
               alt="Article Cover"
-              className="object-cover w-full h-full"
+              className="mx-auto"
             />
           </div>
           )}
