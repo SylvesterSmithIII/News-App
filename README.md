@@ -1,74 +1,51 @@
-# MERN-Stack Infrastructure
+# The Corner Office
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+![The Corner Office Logo](/public/images/TheCornerOfficeLogo.svg)
 
-# Getting Started with Create React App
+**The Corner Office** is a web application that provides users with up-to-date news and weather information in one convenient platform. Stay informed about the latest news headlines and get real-time weather updates, all in one place.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+- **News Headlines:** Access the latest news headlines from reputable sources, keeping you informed about current events and breaking news.
 
-In the project directory, you can run:
+- **Weather Updates:** Get real-time weather information for your location or any location of your choice. Stay prepared with accurate weather forecasts.
 
-### `npm start`
+- **User-Friendly Interface:** The app offers an intuitive and user-friendly interface, making it easy for users of all levels to navigate and find the information they need.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Customization:** Customize your experience by choosing your preferred news sources and setting up weather alerts for specific locations.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive Design:** Access the app on various devices, including desktop computers, tablets, and mobile phones, with a responsive and adaptive design.
 
-### `npm test`
+### Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Visit the Website:** Open your web browser and go to [The Corner Office's Website](https://the-corner-office-fd46756f89b2.herokuapp.com/).
 
-### `npm run build`
+2. **Explore News:** Browse the latest news headlines by category or source. Click on an article to read more.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Check the Weather:** Enter your location to view current weather conditions and forecasts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Customize Your Experience:** Create an account to customize your news sources and set up location information
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Stay Informed:** Enjoy staying up-to-date with the latest news and being prepared for changing weather conditions.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies Used
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **MongoDB**
+- **Express.js**
+- **React**
+- **Node.js**
+- **Tailwind CSS**
+- **Puppeteer**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## IceBox Features
 
-## Learn More
+- WebScrape from all possible articles
+- Better UI & UX
+- Hourly Temperatures
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API Information
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Weather data provided by [OpenWeather](https://developer.accuweather.com/apis).
+- News articles provided by [Media Stack](https://mediastack.com/documentation)
