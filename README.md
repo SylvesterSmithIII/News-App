@@ -16,6 +16,12 @@
 
 - **Responsive Design:** Access the app on various devices, including desktop computers, tablets, and mobile phones, with a responsive and adaptive design.
 
+### Screenshots
+
+![The Corner Office Home Page](/public/images/home-page.png)
+![The Corner Office Search Page](/public/images/search-page.png)
+
+
 ### Usage
 
 1. **Visit the Website:** Open your web browser and go to [The Corner Office's Website](https://the-corner-office-fd46756f89b2.herokuapp.com/).
