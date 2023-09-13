@@ -22,9 +22,9 @@
 ![The Corner Office Search Page](/public/images/search-page.png)
 
 
-### Usage
+### Get Started
 
-1. **Visit the Website:** Open your web browser and go to [The Corner Office's Website](https://the-corner-office-fd46756f89b2.herokuapp.com/).
+1. **Visit the Website:** Go to [The Corner Office's Website](https://the-corner-office-fd46756f89b2.herokuapp.com/).
 
 2. **Explore News:** Browse the latest news headlines by category or source. Click on an article to read more.
 
@@ -33,6 +33,8 @@
 4. **Customize Your Experience:** Create an account to customize your news sources and set up location information
 
 5. **Stay Informed:** Enjoy staying up-to-date with the latest news and being prepared for changing weather conditions.
+
+6. **Trello** Visit my [Trello Board](https://trello.com/b/XMVaYNfo/mern-stack)
 
 
 ## Technologies Used
