@@ -33,6 +33,7 @@ export default function ArticleCard({ article, setCurrentArticle, user, setUser,
         })
 
         localStorage.setItem('token', newUserData.token)
+        console.log(setUser)
         setUser(newUserData.user)
     }
 
