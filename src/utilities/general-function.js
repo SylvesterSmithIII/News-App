@@ -82,3 +82,25 @@ export function returnWord(icon) {
     return "Snowy"
   }
 }
+
+export async function getNews(homePageUrl) {
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY
+  const apiUrl = "https://api.mediastack.com/v1/news"
+
+  try {
+      let response
+      if (homePageUrl) {
+          response = await fetch(homePageUrl)
+      } else {
+          response = await fetch(`${apiUrl}?access_key=${apiKey}&sources=cnn`)
+      }
+
+      if (!response.ok) throw new Error(`API request failed with status: ${response.status}`)
+
+      const data = await response.json()
+
+      return data.data
+  } catch (error) {
+      throw new Error(`API request failed with status: ${error}`)
+  }
+}

@@ -24,11 +24,18 @@ export function createSearchURL(params) {
 
         let wholeWord = ""
 
-        params[key].forEach(arr => {
-            wholeWord += `${arr},`
-        })
-
-        // remove trailing comma
+        if (key === "keywords") {
+            params[key].forEach(arr => {
+                wholeWord += `${arr}+`
+                wholeWord = wholeWord.slice(0, -1)
+            })
+        } else {
+            params[key].forEach(arr => {
+                wholeWord += `${arr},`
+            })
+        }
+ 
+        // remove trailing comma or plus
         wholeWord = wholeWord.slice(0, -1)
 
         searchParams.append(key, wholeWord)

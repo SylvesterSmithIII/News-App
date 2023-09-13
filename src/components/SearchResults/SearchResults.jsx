@@ -17,7 +17,7 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
 
     const articles = newsArticles.map((article, key) => <ArticleCard key={key} article={article} setCurrentArticle={setCurrentArticle} loading={loading} setLoading={setLoading} showSaved={true} user={user} setUser={setUser} />)
 
-
+    const hasNoArticles = newsArticles.length ? false : true
 
     return (
         <>
@@ -32,9 +32,17 @@ export default function SearchResults({ currentArticle, newsArticles, setNewsArt
             <ArticleCard article={currentArticle.preview} setCurrentArticle={setCurrentArticle} user={user} setUser={setUser} loading={loading} setLoading={setLoading} showSaved={false} />
             </>
             :
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>
+            <>
+            {
+                hasNoArticles
+                ?
+                <p className='text-2xl text-center'>Couldn't find any articles! Try a different search</p>
+                :
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4'>
                 {articles}
-            </div>
+                </div>
+            }
+            </>
         }
         </>
     )

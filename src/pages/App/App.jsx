@@ -39,8 +39,7 @@ export default function App() {
 
   async function getWeatherStats() {
     if (user?.settings?.locationInfo?.zipcodeKey) {
-      // const data = await getForecast(user.settings.zipcodeKey)
-      const data = []
+      const data = await getForecast(user.settings.locationInfo.zipcodeKey)
       setWeatherStats(data)
       setWeatherLoading(false)
     }

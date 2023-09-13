@@ -24,6 +24,8 @@ export default function SearchPage({ newsArticles, setNewsArticles, currentArtic
     })
   }
 
+  const hasNoArticles = newsArticles.length ? false : true
+
 
   return (
       <div className='w-full p-8'>
@@ -35,7 +37,13 @@ export default function SearchPage({ newsArticles, setNewsArticles, currentArtic
 
         <SearchResults newsArticles={newsArticles} setNewsArticles={setNewsArticles} setCurrentArticle={setCurrentArticle} currentArticle={currentArticle} formData={formData} loading={loading} setLoading={setLoading} user={user} setUser={setUser} />
 
-        {formData.limit[0] === 100 ? "" : <button onClick={handleLoadMore} className='text-2xl font-bold block my-4 hover:text-blue-500 transition duration-300 ease-in-out mx-auto'>Load More Articles</button>}
+        {
+          hasNoArticles
+          ?
+          <></>
+          :
+          formData.limit[0] === 100 ? "" : <button onClick={handleLoadMore} className='text-2xl font-bold block my-4 hover:text-blue-500 transition duration-300 ease-in-out mx-auto'>Load More Articles</button>
+        }
         
       </div>
     );
