@@ -36,6 +36,8 @@
 
 6. **Trello** Visit my [Trello Board](https://trello.com/b/XMVaYNfo/mern-stack)
 
+7. **Youtube Link** [link](https://www.youtube.com/watch?v=Cd9rHSGbUTg)
+
 
 ## Technologies Used
 
